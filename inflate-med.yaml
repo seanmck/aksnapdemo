@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inflate-med
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: inflate-med
+  template:
+    metadata:
+      labels:
+        app: inflate-med
+    spec:
+      containers:
+      - image: mcr.microsoft.com/oss/kubernetes/pause:3.6
+        name: inflate
+        resources:
+          requests:
+            cpu: "500m"
+            memory: 512M
